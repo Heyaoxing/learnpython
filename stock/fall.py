@@ -8,7 +8,7 @@ import time
 from sqlalchemy import create_engine
 fall = 0.5
 up = 0.08
-
+pe=13
 date = -150
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
@@ -23,8 +23,8 @@ columns = ['code', 'name', 'pe', 'stardate', 'enddate', 'maxdate',
 
 def process(code, hist, temp):
     try:
-        if hist is None or hist.index is None or temp['pe'] <= 0:
-                return
+        if hist is None or hist.index is None or temp['pe'] <= 0 or temp['pe']>pe:
+            return
         df= hist[(hist.index>=star)&(hist.index<=end)]
         if df is None:
             return

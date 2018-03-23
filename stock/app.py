@@ -8,7 +8,6 @@ import fall as fa
 import pullup as pu
 
 
-pe = 30
 date = -365
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)

@@ -13,10 +13,10 @@ def tosend(to_list,start,end):
     if to_list is None or len(to_list)==0:
         return
 
-    #发送邮件的相关信息，根据你实际情况填写  
+    #发送邮件的相关信息
     smtpHost = 'smtp.qq.com'  
     smtpPort = '25'  
-    sslPort  = '465'  
+    sslPort  = '465'   
     fromMail = '730530507@qq.com'  
     toMail   = '1650041517@qq.com'  
     username = '730530507@qq.com'  

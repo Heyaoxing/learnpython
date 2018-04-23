@@ -65,8 +65,8 @@ def format(to_list,start,end):
     value=''
     for temp in to_list.index:
         temp=to_list.loc[temp]
-        value+=  '''<tr height=20 style='mso-height-source:userset;height:15pt' id='r2'>
-                        <td height=20 class='x23 x24_left' style='height:15pt;'>%s</td>
+        value+=  '''<tr height=20 style='mso-height-source:userset;height:12pt' id='r2'>
+                        <td height=20 class='x23 x24_left' style='height:12pt;'>%s</td>
                         <td class=x25>%s</td>
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
@@ -317,8 +317,8 @@ def format(to_list,start,end):
                     <col class=x22 width=120 style='mso-width-source:userset;width:90pt'>
                     <col class=x21 width=85 style='mso-width-source:userset;width:63pt'>
                     <col class=x21 width=143 style='mso-width-source:userset;width:107pt'>
-                    <tr height=20 style='mso-height-source:userset;height:15pt' id='r0'>
-                        <td height=20 class='x26 x26_left' width=85 style='height:15pt;width:63.75pt;'>证券代码</td>
+                    <tr height=20 style='mso-height-source:userset;height:12pt' id='r0'>
+                        <td height=20 class='x26 x26_left' width=85 style='height:12pt;width:63.75pt;'>证券代码</td>
                         <td class=x27 width=85 style='width:63.75pt;'>证券名称</td>
                         <td class=x28 width=85 style='width:63.75pt;'>成本价</td>
                         <td class=x28 width=85 style='width:63.75pt;'>盈亏比(%)</td>

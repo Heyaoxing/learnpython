@@ -6,6 +6,8 @@ import datetime
 import uniout
 import processor as pro
 import toemail as email
+import sys
+import loghelper as logging
 change=20
 date = -15
 nowtime = datetime.datetime.now()
@@ -33,4 +35,5 @@ for code in filter_stock.index:
 
 result=pro.export() 
 email.tosend(result,star,end)
+logging.info('完成时间'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 print 'end'

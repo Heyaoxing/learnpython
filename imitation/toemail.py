@@ -18,7 +18,7 @@ def tosend(to_list,start,end):
     smtpPort = '25'  
     sslPort  = '465'  
     fromMail = '730530507@qq.com'  
-    toMail   = '730530507@qq.com'  
+    toMail   = '1650041517@qq.com'  
     username = '730530507@qq.com'  
     password = 'yiuthnszusifbbdj'  
     #解决中文问题  
@@ -165,10 +165,10 @@ def format(to_list,start,end):
                         mso-protection: locked visible;
                     }
                     .x26_left{
-                        border-left: 1px solid #BFBFBF;
+                        border-left: 1px solid #A6A6A6;
                     }
                      .x24_left{
-                        border-left: 1px solid #808080;
+                        border-left: 1px solid #BFBFBF;
                     }
                     .x25 {
                         mso-style-parent: style0;

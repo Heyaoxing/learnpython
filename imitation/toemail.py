@@ -18,7 +18,7 @@ def tosend(to_list,start,end):
     smtpPort = '25'  
     sslPort  = '465'   
     fromMail = '730530507@qq.com'  
-    toMail   = '1650041517@qq.com'  
+    toMail   = '1987613740@qq.com'  
     username = '730530507@qq.com'  
     password = 'yiuthnszusifbbdj'  
     #解决中文问题  
@@ -35,7 +35,7 @@ def tosend(to_list,start,end):
     mail = MIMEText(body.encode(encoding),'html',encoding)  
     mail['Subject'] = Header(subject,encoding)  
     mail['From'] = fromMail  
-    mail['To'] = toMail  
+    mail['To'] = toMail
     mail['Date'] = formatdate()  
 
     #连接smtp服务器，明文/SSL/TLS三种方式，根据你使用的SMTP支持情况选择一种  
@@ -65,8 +65,8 @@ def format(to_list,start,end):
     value=''
     for temp in to_list.index:
         temp=to_list.loc[temp]
-        value+=  '''<tr height=20 style='mso-height-source:userset;height:12pt' id='r2'>
-                        <td height=20 class='x23 x24_left' style='height:12pt;'>%s</td>
+        value+=  '''<tr height=20 style='mso-height-source:userset;height:11pt' id='r2'>
+                        <td height=20 class='x23 x24_left' style='height:11pt;'>%s</td>
                         <td class=x25>%s</td>
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
@@ -314,9 +314,9 @@ def format(to_list,start,end):
             collapse;table-layout:fixed;width:707pt'>
                     <col class=x21 width=85 span=6 style='mso-width-source:userset;width:63pt'>
                     <col class=x22 width=85 style='mso-width-source:userset;width:63pt'>
-                    <col class=x22 width=120 style='mso-width-source:userset;width:90pt'>
+                    <col class=x22 width=85 style='mso-width-source:userset;width:63pt'>
                     <col class=x21 width=85 style='mso-width-source:userset;width:63pt'>
-                    <col class=x21 width=143 style='mso-width-source:userset;width:107pt'>
+                    <col class=x21 width=85 style='mso-width-source:userset;width:63pt'>
                     <tr height=20 style='mso-height-source:userset;height:12pt' id='r0'>
                         <td height=20 class='x26 x26_left' width=85 style='height:12pt;width:63.75pt;'>证券代码</td>
                         <td class=x27 width=85 style='width:63.75pt;'>证券名称</td>
@@ -325,9 +325,9 @@ def format(to_list,start,end):
                         <td class=x28 width=85 style='width:63.75pt;'>股票余额</td>
                         <td class=x28 width=85 style='width:63.75pt;'>可用余额</td>
                         <td class=x28 width=85 style='width:63.75pt;'>冻结数量</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>盈亏</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>市价</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>市值</td>
+                        <td class=x28 width=50>盈亏</td>
+                        <td class=x28 width=50 >市价</td>
+                        <td class=x28 width=50 >市值</td>
                     </tr>
                    '''+value+'''
                 </table>
@@ -345,7 +345,7 @@ def format(to_list,start,end):
                 </table>
                 <h2>装逼有风险，记得先大致对一下数据，以防装逼失败.</h2>
                 <h2>温馨提示:每次发邮件时，买入的股数是会变的哦，因为是随机买的，价格控制在2万5到5万之间</h2>
-                <h2>选股规则是:15天之内，涨幅超过20%的，并且排除了停牌和市盈率为0的退市股</h2>
+                <h2>选股规则是:15天之内，涨幅超过10%的，并且排除了停牌和市盈率为0的退市股</h2>
                 <br/>
                 <span><h3>©2018 秋刀鱼出品</h3></span>
                 <br/>

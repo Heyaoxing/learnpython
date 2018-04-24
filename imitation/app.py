@@ -8,7 +8,11 @@ import processor as pro
 import toemail as email
 import sys
 import loghelper as logging
-change=20
+
+
+logging.info('开始时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
+change=10
 date = -15
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
@@ -35,5 +39,5 @@ for code in filter_stock.index:
 
 result=pro.export() 
 email.tosend(result,star,end)
-logging.info('完成时间'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+logging.info('完成时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 print 'end'

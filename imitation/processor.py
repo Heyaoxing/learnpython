@@ -26,7 +26,7 @@ def filter(code, hist, temp,star,end,change):
         if crotch_number<=0:
             return
         
-        profit=round((now_close-tail_close)*crotch_number,3)
+        profit=round((now_close-tail_close)*crotch_number,3)+random.uniform(1,10)/100
         value=round(now_close*crotch_number,3)
 
         filter_list.append([code,temp['name'],tail_close,p_change,crotch_number,crotch_number,0,profit,now_close,value])

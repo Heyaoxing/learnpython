@@ -1,15 +1,10 @@
-import logging
-import sys
-
-logging.basicConfig(level=logging.DEBUG,
-                    filename='new.log',
-                    filemode='a',
-                    format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
-logger = logging.getLogger('simple_logger')
-logger.setLevel(logging.DEBUG)
- 
-logger.debug('debug message')
-logger.info('info message')
-logger.warn('warn message')
-logger.error('error message')
-logger.critical('critical message')
+#-*- coding: utf-8 -*-
+import tushare as ts
+import pandas as pd
+import numpy as np
+import datetime
+import uniout
+import fall as fa
+import select as se
+area='bank'+'stock'
+print area

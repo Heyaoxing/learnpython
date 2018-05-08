@@ -5,10 +5,10 @@ import numpy as np
 import datetime
 import uniout
 import fall as fa
-import pullup as pu
+import select as se
 
 
-date = -365
+date = -10
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
 da_days = nowtime+detaday
@@ -17,10 +17,10 @@ end = nowtime.strftime('%Y-%m-%d')
 
 
 now_stock = ts.get_stock_basics()
-filter_stock = now_stock[now_stock['pe'] != 0]
+filter_stock = now_stock[now_stock['pe'] > 0]
 for code in filter_stock.index:
     temp = filter_stock.loc[code]
     hist = ts.get_hist_data(code, start=star, end=end)
-    pu.process(code, hist, temp)
-pu.commit()
+    se.process(code, hist, temp,star,end)
+se.commit()
 print 'end'

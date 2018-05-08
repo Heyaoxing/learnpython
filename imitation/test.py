@@ -1,10 +1,19 @@
-#-*- coding: utf-8 -*-
+
 import tushare as ts
 import pandas as pd
 import numpy as np
 import datetime
 import uniout
+import urllib2
+from bs4 import BeautifulSoup
+import sys   
+reload(sys)
+sys.setdefaultencoding('utf-8')  
 
-now_stock =ts.get_hist_data('600009')
-print now_stock.iloc[0]['close']
-print now_stock.iloc[len(now_stock)-1]['close']
+url='https://image.baidu.com/search/index?tn=baiduimage&ct=201326592&lm=-1&cl=2&ie=gbk&word=%C5%ED%D3%DA%EA%CC&fr=ala&ala=1&alatpl=adress&pos=0&hs=2&xthttps=111111'
+resp=urllib2.urlopen(url)
+html=resp.read()
+
+bs=BeautifulSoup(html)
+
+print bs.select('.imgitem')

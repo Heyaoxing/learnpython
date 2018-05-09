@@ -10,10 +10,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')  
 
-url='https://image.baidu.com/search/index?tn=baiduimage&ct=201326592&lm=-1&cl=2&ie=gbk&word=%C5%ED%D3%DA%EA%CC&fr=ala&ala=1&alatpl=adress&pos=0&hs=2&xthttps=111111'
-resp=urllib2.urlopen(url)
-html=resp.read()
 
-bs=BeautifulSoup(html)
+code='603244'
+print  dict.get(code[0:2])
 
-print bs.select('.imgitem')

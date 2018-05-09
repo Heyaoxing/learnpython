@@ -9,7 +9,7 @@ import datetime
 import uniout
 encoding = 'utf-8'  
 
-def tosend(to_list,start,end):
+def tosend(to_list,start,end,tomail):
     if to_list is None or len(to_list)==0:
         return
 
@@ -18,7 +18,7 @@ def tosend(to_list,start,end):
     smtpPort = '25'  
     sslPort  = '465'   
     fromMail = '730530507@qq.com'  
-    toMail   = '1987613740@qq.com'  
+    toMail   = tomail  
     username = '730530507@qq.com'  
     password = 'yiuthnszusifbbdj'  
     #解决中文问题  
@@ -65,18 +65,16 @@ def format(to_list,start,end):
     value=''
     for temp in to_list.index:
         temp=to_list.loc[temp]
-        value+=  '''<tr height=20 style='mso-height-source:userset;height:11pt' id='r2'>
-                        <td height=20 class='x23 x24_left' style='height:11pt;'>%s</td>
-                        <td class=x25>%s</td>
+        value+=  '''<tr>
+                        <td class='x25'>%s</td>
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
-                        <td class=x29>%s</td>
-                        <td class=x30>%s</td>
-                        <td class=x30>%s</td>
-                        <td class=x30>%s</td>
-                    </tr>'''%(temp.code,temp.stock_name,"%0.3f" %temp.tail_close,temp.p_change,"%0.0f"%temp.crotch_number,"%0.0f"%temp.avaliable_crotch_number,"%0.0f"%temp.unavaliable_crotch_number,"%0.3f" %temp.profit,"%0.3f" %temp.now_close,"%0.3f" %temp.value)
+                        <td class=x24>%s</td>
+                        <td class=x241>%s</td>
+                        <td class=x30><img src="%s" /></td>
+                    </tr>'''%(temp.code,temp.tname,temp.pe,temp.turnover,temp.nowprice,temp.change,temp.tip,temp.kline)
     print value
     return '''<html>
             <head>
@@ -120,13 +118,11 @@ def format(to_list,start,end):
                     .x23 {
                         mso-style-parent: style0;
                         mso-number-format: "\@";
-                        text-align: left;
-                        padding-left:5px;
+                        text-align: center;
                         vertical-align: middle;
                         white-space: nowrap;
                         background: auto;
                         mso-pattern: auto;
-                        color: #FF0000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -143,15 +139,37 @@ def format(to_list,start,end):
                     .x24 {
                         mso-style-parent: style0;
                         mso-number-format: General;
-                        text-align: right;
-                        padding-right:5px;
+                        text-align: center;
                         vertical-align: middle;
                         white-space: nowrap;
                         mso-char-indent-count: 1;
                         padding-left: 7px;
                         background: auto;
                         mso-pattern: auto;
-                        color: #FF0000;
+                        font-size: 10pt;
+                        font-weight: 400;
+                        font-style: normal;
+                        font-family: "宋体", "monospace";
+                        border-top: 1px solid #808080;
+                        border-right: 1px solid #BFBFBF;
+                        border-bottom: 1px solid #BFBFBF;
+                        border-left: 1px solid #BFBFBF;
+                        mso-diagonal-down: none;
+                        mso-diagonal-up: none;
+                        mso-protection: locked visible;
+                    }
+                      .x241 {
+                        mso-style-parent: style0;
+                        mso-number-format: General;
+                        text-align: right;
+                        padding-right:5px;
+                        vertical-align: middle;
+                        white-space: nowrap;
+                        mso-char-indent-count: 1;
+                        padding-left: 7px;
+                        color:#FF0000;
+                        background: auto;
+                        mso-pattern: auto;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -173,13 +191,11 @@ def format(to_list,start,end):
                     .x25 {
                         mso-style-parent: style0;
                         mso-number-format: General;
-                        text-align: left;
-                        padding-left:5px;
+                        text-align: center;
                         vertical-align: middle;
                         white-space: nowrap;
                         background: auto;
                         mso-pattern: auto;
-                        color: #FF0000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -201,7 +217,6 @@ def format(to_list,start,end):
                         white-space: nowrap;
                         background: #EBF6FF;
                         mso-pattern: auto none;
-                        color: #000000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -223,7 +238,6 @@ def format(to_list,start,end):
                         white-space: nowrap;
                         background: #EBF6FF;
                         mso-pattern: auto none;
-                        color: #000000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -245,7 +259,6 @@ def format(to_list,start,end):
                         white-space: nowrap;
                         background: #EBF6FF;
                         mso-pattern: auto none;
-                        color: #000000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -268,7 +281,6 @@ def format(to_list,start,end):
                         white-space: nowrap;
                         background: auto;
                         mso-pattern: auto;
-                        color: #FF0000;
                         font-size: 10pt;
                         font-weight: 400;
                         font-style: normal;
@@ -285,8 +297,6 @@ def format(to_list,start,end):
                     .x30 {
                         mso-style-parent: style0;
                         mso-number-format: "0\.000_ ";
-                        text-align: right;
-                        padding-right:5px;
                         vertical-align: middle;
                         white-space: nowrap;
                         mso-char-indent-count: 1;
@@ -310,24 +320,17 @@ def format(to_list,start,end):
             </head>
 
             <body>
-                <table border=0 cellpadding=0 cellspacing=0 width=943 style='border-collapse: 
-            collapse;table-layout:fixed;width:707pt'>
-                    <col class=x21 width=85 span=6 style='mso-width-source:userset;width:63pt'>
-                    <col class=x22 width=85 style='mso-width-source:userset;width:63pt'>
-                    <col class=x22 width=85 style='mso-width-source:userset;width:63pt'>
-                    <col class=x21 width=85 style='mso-width-source:userset;width:63pt'>
-                    <col class=x21 width=85 style='mso-width-source:userset;width:63pt'>
+                <table border=0 cellpadding=0 cellspacing=0 style='border-collapse: 
+            collapse;table-layout:fixed;'>
                     <tr height=20 style='mso-height-source:userset;height:12pt' id='r0'>
                         <td height=20 class='x26 x26_left' width=85 style='height:12pt;width:63.75pt;'>证券代码</td>
-                        <td class=x27 width=85 style='width:63.75pt;'>证券名称</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>成本价</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>盈亏比(%)</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>股票余额</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>可用余额</td>
-                        <td class=x28 width=85 style='width:63.75pt;'>冻结数量</td>
-                        <td class=x28 width=50>盈亏</td>
-                        <td class=x28 width=50 >市价</td>
-                        <td class=x28 width=50 >市值</td>
+                        <td class=x27 width=85 >证券名称</td>
+                        <td class=x28 width=85 >市盈率</td>
+                        <td class=x28 width=85 >换手率</td>
+                        <td class=x28 width=85 >当前价格</td>
+                        <td class=x28 width=85 >当日涨幅</td>
+                        <td class=x28 width=85 >风险提醒</td>
+                        <td class=x28 >日线</td>
                     </tr>
                    '''+value+'''
                 </table>
@@ -335,17 +338,6 @@ def format(to_list,start,end):
                 <br/>
                 <br/>
                 <br/>
-                <table>
-                  <tr>
-                    <td>买入时间:</td><td>'''+start+'''</td>
-                  </tr>
-                  <tr>
-                    <td>目前市价时间:</td><td>'''+end+'''</td>
-                  </tr>
-                </table>
-                <h2>装逼有风险，记得先大致对一下数据，以防装逼失败.</h2>
-                <h2>温馨提示:每次发邮件时，买入的股数是会变的哦，因为是随机买的，价格控制在2万5到5万之间</h2>
-                <h2>选股规则是:15天之内，涨幅超过10%的，并且排除了停牌和市盈率为0的退市股</h2>
                 <br/>
                 <span><h3>©2018 秋刀鱼出品</h3></span>
                 <br/>

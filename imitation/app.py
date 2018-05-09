@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import datetime
 import uniout
-import processor as pro
+import select as se
 import toemail as email
 import sys
 import loghelper as logging
@@ -12,8 +12,7 @@ import loghelper as logging
 
 logging.info('开始时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
-change=10
-date = -15
+date = -7
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
 da_days = nowtime+detaday
@@ -32,12 +31,13 @@ for code in filter_stock.index:
             continue
         if hist is None:
             continue
-        pro.filter(code, hist, temp,star,end,change)
+        se.filter(code, hist, temp,star,end) 
 
     except:
         print '\n======except!! code is ',code
 
-result=pro.export() 
-email.tosend(result,star,end)
+result=se.export() 
+email.tosend(result,star,end,'730530507@qq.com')
+email.tosend(result,star,end,'1987613740@qq.com')
 logging.info('完成时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 print 'end'

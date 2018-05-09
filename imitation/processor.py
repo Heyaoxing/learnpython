@@ -9,6 +9,7 @@ import random
 
 pledge=50000
 
+
 filter_list = []
 columns = ['code', 'stock_name', 'tail_close','p_change','crotch_number', 'avaliable_crotch_number','unavaliable_crotch_number','profit','now_close','value']
 
@@ -25,7 +26,8 @@ def filter(code, hist, temp,star,end,change):
         crotch_number=round(crotch(now_close),0)
         if crotch_number<=0:
             return
-        
+            
+       
         profit=round((now_close-tail_close)*crotch_number,3)+random.uniform(1,10)/100
         value=round(now_close*crotch_number,3)
 

@@ -16,9 +16,7 @@ from sqlalchemy import create_engine
 # end =  (nowtime+end_detaday).strftime('%Y-%m-%d')
 
 nowtime = datetime.datetime.now()
-time= 3
-global a
-a = 3
+time= 2
 area=['辽宁','吉林','内蒙古','黑龙江']
 filter_list = []
 columns = ['code', 'tname', 'pe','turnover', 'nowprice','change','kline','tip']
@@ -46,7 +44,7 @@ def filter(code, hist, temp,star,end):
         if(df.iloc[index]['ma5']>df.iloc[index]['ma10'] and df.iloc[index]['ma10']>df.iloc[index]['ma20']):
             isTrue=True
         index=index+1
-    if isTrue==False or df.iloc[0]['p_change']<0 or df.iloc[0]['turnover']<2:
+    if isTrue==False or df.iloc[0]['p_change']<0 or df.iloc[0]['turnover']<8:
         return      
 
     tip=''

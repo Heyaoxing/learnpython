@@ -11,6 +11,13 @@ reload(sys)
 sys.setdefaultencoding('utf-8')  
 
 
-code='603244'
-print  dict.get(code[0:2])
 
+def math_test(price,a):
+    a=a+1
+    print price
+    if(a>15):
+        return price
+    math_test(price*0.1+price,a)
+
+
+math_test(50000,0)

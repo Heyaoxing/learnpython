@@ -55,7 +55,7 @@ def filter(code, hist, temp,star,end):
         if (df.iloc[index+1]['close']-df.iloc[index+1]['open'])/df.iloc[index+1]['open']*100<8:
             index=index+1
             continue
-        if (minval-df.iloc[index+1]['close'])/df.iloc[index+1]['close']*100<2:
+        if (minval-df.iloc[index+1]['close'])/df.iloc[index+1]['close']*100<0.8:
             index=index+1
             continue
         

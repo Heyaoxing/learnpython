@@ -49,9 +49,11 @@ def filter(code, hist, temp,star,end):
             continue
         if df.iloc[index+1]['volume']>df.iloc[index]['volume']:
             index=index+1
-            continue   
-        index=index+1
-        isTrue=True
+            continue
+        if df.iloc[index]['ma5']<df.iloc[index+1]['ma5'] and df.iloc[index]['ma10']<df.iloc[index+1]['ma10'] and df.iloc[index]['ma20']<df.iloc[index+1]['ma20']:    
+            index=index+1
+            isTrue=True  
+        
 
     if isTrue==False:
         return 

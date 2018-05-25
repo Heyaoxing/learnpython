@@ -12,7 +12,7 @@ import loghelper as logging
 
 logging.info('开始时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
-date = -30
+date = -60
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
 da_days = nowtime+detaday
@@ -38,6 +38,6 @@ for code in filter_stock.index:
 
 result=se.export() 
 email.tosend(result,star,end,'730530507@qq.com')
-#email.tosend(result,star,end,'1987613740@qq.com')
+email.tosend(result,star,end,'1987613740@qq.com')
 logging.info('完成时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 print 'end'

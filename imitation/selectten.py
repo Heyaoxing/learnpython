@@ -27,7 +27,7 @@ def filter(code, hist, temp,star,end):
     df= hist[(hist.index>=star)&(hist.index<=end)]
     if df is None:
         return
-    
+    print 'filter code',code
     length=len(df)-1
     index=0
     isTrue=False

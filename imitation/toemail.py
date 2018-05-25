@@ -74,7 +74,7 @@ def format(to_list,start,end):
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
                         <td class=x241>%s</td>
-                        <td class=x30><img src="%s"/></td>
+                        <td class=x30><a href="%s">点击查看k线</a></td>
                     </tr>'''%(temp.code,temp.tname,temp.pe,temp.turnover,temp.nowprice,temp.change,temp.tip,temp.kline)
     print value
     return '''<html>

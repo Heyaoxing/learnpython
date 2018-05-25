@@ -333,7 +333,7 @@ def format(to_list,start,end):
                         <td class=x28 width=85 >换手率</td>
                         <td class=x28 width=85 >当前价格</td>
                         <td class=x28 width=85 >当日涨幅</td>
-                        <td class=x28 width=85 >风险提醒</td>
+                        <td class=x28 width=85 >提醒</td>
                         <td class=x28 >日线</td>
                     </tr>
                    '''+value+'''

@@ -31,6 +31,7 @@ def filter(code, hist, temp,star,end):
     length=len(df)-1
     index=0
     isTrue=False
+    tip=''
     while(length>index):
         maxval=max(df.iloc[index]['open'],df.iloc[index]['close'])
         minval=min(df.iloc[index]['open'],df.iloc[index]['close'])
@@ -50,14 +51,23 @@ def filter(code, hist, temp,star,end):
         if df.iloc[index+1]['volume']>df.iloc[index]['volume']:
             index=index+1
             continue
-        if df.iloc[index]['ma5']>df.iloc[index+1]['ma5'] and df.iloc[index]['ma10']>df.iloc[index+1]['ma10'] and df.iloc[index]['ma20']>df.iloc[index+1]['ma20']:    
+        
+        if (df.iloc[index+1]['close']-df.iloc[index+1]['open'])/df.iloc[index+1]['open']*100<8:
+            index=index+1
+            continue
+        if (minval-df.iloc[index+1]['close'])/df.iloc[index+1]['close']*100<2:
+            index=index+1
+            continue
+        
+        if df.iloc[index]['ma5']>df.iloc[index+1]['ma5'] and df.iloc[index]['ma10']>df.iloc[index+1]['ma10'] and df.iloc[index]['ma20']>df.iloc[index+1]['ma20']:   
+            tip=tip+' 出现十字星放量日期为:',df.iloc[index].name
             isTrue=True  
         index=index+1
 
     if isTrue==False:
         return 
 
-    tip=''
+    
     if temp['industry'].decode('utf-8').encode('gbk') in area:
         tip=tip+' 东北票'   
     if temp['area'].find('银行')!=-1 or temp['name'].find('银行')!=-1:

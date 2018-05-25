@@ -60,7 +60,8 @@ def filter(code, hist, temp,star,end):
             continue
         
         if df.iloc[index]['ma5']>df.iloc[index+1]['ma5'] and df.iloc[index]['ma10']>df.iloc[index+1]['ma10'] and df.iloc[index]['ma20']>df.iloc[index+1]['ma20']:   
-            tip=tip+' 出现十字星放量日期为:' + df.iloc[index].name
+            print 'result code',code
+            tip=tip+'放量日期:'+ df.iloc[index].name.decode('utf-8').encode('gbk')
             isTrue=True  
         index=index+1
 

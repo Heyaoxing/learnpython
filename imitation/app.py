@@ -23,7 +23,7 @@ end = nowtime.strftime('%Y-%m-%d')
 now_stock = ts.get_stock_basics()
 filter_stock = now_stock[now_stock['pe'] != 0]
 
-for code in filter_stock.index:
+for code in filter_stock.head(50).index:
     try:
         temp = filter_stock.loc[code]
         hist = ts.get_hist_data(code, start=star, end=end)
@@ -33,11 +33,11 @@ for code in filter_stock.index:
             continue
         se.filter(code, hist, temp,star,end) 
 
-    except:
-        print '\n======except!! code is ',code
+    except Exception,err:
+        print '\n======except!! code is ',code,' ',err
 
 result=se.export() 
-email.tosend(result,star,end,'730530507@qq.com')
-email.tosend(result,star,end,'1987613740@qq.com')
+#email.tosend(result,star,end,'730530507@qq.com')
+#email.tosend(result,star,end,'1987613740@qq.com')
 logging.info('完成时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 print 'end'

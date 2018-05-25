@@ -16,7 +16,7 @@ da_days = nowtime+detaday
 star = da_days.strftime('%Y-%m-%d')
 end = nowtime.strftime('%Y-%m-%d')
 
-df=ts.get_hist_data("002458",star,end)
+df=ts.get_hist_data("300643",star,end)
 if df is None:
     print 'None'
 length=len(df)-1
@@ -27,7 +27,7 @@ while(length>index):
         maxval=max(df.iloc[index]['open'],df.iloc[index]['close'])
         minval=min(df.iloc[index]['open'],df.iloc[index]['close'])
         change= (maxval-minval)/minval*100
-        if change > 0.5:
+        if change > 0.3:
             index=index+1
             continue
         if maxval>=df.iloc[index]['high'] or minval<=df.iloc[index]['low']:
@@ -51,7 +51,6 @@ while(length>index):
             continue
         
         if df.iloc[index]['ma5']>df.iloc[index+1]['ma5'] and df.iloc[index]['ma10']>df.iloc[index+1]['ma10'] and df.iloc[index]['ma20']>df.iloc[index+1]['ma20']:   
-            tip=tip+' 出现十字星放量日期为:' + df.iloc[index].name
             isTrue=True  
         index=index+1
 

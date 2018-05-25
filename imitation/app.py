@@ -27,7 +27,7 @@ for code in filter_stock.index:
     try:
         temp = filter_stock.loc[code]
         hist = ts.get_hist_data(code, start=star, end=end)
-        if hist is None or hist.index is None or temp['pe'] <= 0:
+        if hist is None :
             continue
         if hist is None:
             continue

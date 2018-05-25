@@ -67,15 +67,6 @@ def filter(code, hist, temp,star,end):
     if isTrue==False:
         return 
 
-    
-    if temp['industry'].decode('utf-8').encode('gbk') in area:
-        tip=tip+' 东北票'   
-    if temp['area'].find('银行')!=-1 or temp['name'].find('银行')!=-1:
-        tip=tip+' 银行票'  
-    if temp['name'].find('ST')!=-1:
-        tip=tip+' ST票' 
-    if df.iloc[0]['p_change']>9.5:
-        tip=tip+' 涨幅过大'         
 
     kline='http://image.sinajs.cn/newchart/daily/n/'+ dict.get(code[0:2])+code+'.gif'
     now_price=df.iloc[0]['close']

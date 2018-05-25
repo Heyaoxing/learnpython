@@ -12,7 +12,7 @@ import loghelper as logging
 
 logging.info('开始时间:'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
-date = -60
+date = -180
 nowtime = datetime.datetime.now()
 detaday = datetime.timedelta(days=date)
 da_days = nowtime+detaday

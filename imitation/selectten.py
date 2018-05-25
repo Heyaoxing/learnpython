@@ -36,7 +36,7 @@ def filter(code, hist, temp,star,end):
         maxval=max(df.iloc[index]['open'],df.iloc[index]['close'])
         minval=min(df.iloc[index]['open'],df.iloc[index]['close'])
         change= (maxval-minval)/minval*100
-        if change>0.7:
+        if change>0.5:
             index=index+1
             continue
         if maxval>=df.iloc[index]['high'] or minval<=df.iloc[index]['low']:

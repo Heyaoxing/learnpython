@@ -11,6 +11,7 @@ encoding = 'utf-8'
 
 def tosend(to_list,start,end,tomail):
     if to_list is None or len(to_list)==0:
+        print 'result is null'
         return
 
     #发送邮件的相关信息
@@ -27,7 +28,7 @@ def tosend(to_list,start,end,tomail):
     
     #邮件标题和内容  
 
-    subject  = '秋刀鱼来啦,今天是:'+ datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    subject  = '秋刀鱼来啦:7个交易日内十字星放量,今天是:'+ datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     body     = format(to_list,start,end)
 
     #初始化邮件  
@@ -73,7 +74,7 @@ def format(to_list,start,end):
                         <td class=x24>%s</td>
                         <td class=x24>%s</td>
                         <td class=x241>%s</td>
-                        <td class=x30><a href="%s">点击查看k线</a></td>
+                        <td class=x30><img src="%s"/></td>
                     </tr>'''%(temp.code,temp.tname,temp.pe,temp.turnover,temp.nowprice,temp.change,temp.tip,temp.kline)
     print value
     return '''<html>
